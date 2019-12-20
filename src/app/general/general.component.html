@@ -1,0 +1,613 @@
+<div class="col-sm-12 col-md-9 mx-auto mt-5 box">
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form #f="ngForm">
+        <ng-template matStepLabel>Данные организации</ng-template>
+        <div
+          id="org-data"
+          ngModelGroup="orgData"
+          #orgData="ngModelGroup"
+          class="org-data"
+        >
+          <div class="row mb-4 mt-5">
+            <div class="col-xs-9 col-md-8">
+              <div class="form-group">
+                <label for="orgname">Наименование</label>
+                <input
+                  type="text"
+                  name="orgname"
+                  id="orgname"
+                  ngModel
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-xs-9 col-md-4">
+              <div class="form-group">
+                <label for="capital">Уставной капитал руб.</label>
+                <input
+                  type="text"
+                  name="capital"
+                  id="capital"
+                  ngModel
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4 d-flex flex-wra">
+            <div class="col-xs-9 col-md-3">
+              <div class="form-group">
+                <label for="regdate">Дата регистрации</label>
+                <input
+                  type="text"
+                  name="regdate"
+                  id="regdate"
+                  ngModel
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-xs-9 col-md-3">
+              <div class="form-group">
+                <label for="term">Срок регистрации(дней)</label>
+                <input
+                  type="text"
+                  name="term"
+                  id="term"
+                  ngModel
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-xs-9 col-md-6">
+              <div class="form-group">
+                <label for="authority"
+                  >Наименование регистрируещего органа</label
+                >
+                <input
+                  type="text"
+                  name="authority"
+                  id="authority"
+                  ngModel
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-xs-9 col-md-4">
+              <div class="form-group">
+                <label for="legalForm">Правовая форма</label>
+                <select class="browser-default custom-select" id="legalForm">
+                  <option selected>OOO и прочее</option>
+                  <option value="1">Select 1</option>
+                  <option value="2">Select 2</option>
+                  <option value="3">Select 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-9 col-md-4">
+              <div class="form-group">
+                <label for="taxSystem">Система налогооблажения</label>
+                <select class="browser-default custom-select" id="taxSystem">
+                  <option selected>УСН 6%</option>
+                  <option value="1">Select 1</option>
+                  <option value="2">Select 2</option>
+                  <option value="3">Select 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="form-group">
+                <label for="numEmployees">Численность работников</label>
+                <input
+                  type="text"
+                  name="numEmployees"
+                  id="numEmployees"
+                  ngModel
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4 d-flex flex-wra">
+            <div class="col-6 col-md-4">
+              <div class="form-group">
+                <label for="taxNumber">ИНН</label>
+                <input
+                  type="text"
+                  name="taxNumber"
+                  id="taxNumber"
+                  ngModel
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="form-group">
+                <label for="code">КПП</label>
+                <input
+                  type="text"
+                  name="code"
+                  id="code"
+                  ngModel
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="form-group">
+                <label for="primRegNumber">ОГРН</label>
+                <input
+                  maxlength="13"
+                  minlength="13"
+                  type="text"
+                  name="primRegNumber"
+                  id="primRegNumber"
+                  ngModel
+                  class="form-control"
+                  #primRegNumber="ngModel"
+                  pattern="[0-9]*"
+                  placeholder="ОГРН"
+                  required
+                />
+                <p
+                  class="help-block"
+                  *ngIf="!primRegNumber.valid && primRegNumber.touched"
+                >
+                  Обяэательно для заполнения
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-xs-9 col-md-8">
+              <div class="form-group">
+                <label for="placeStateReg"
+                  >Место государственной регистрации</label
+                >
+                <div class="input-group">
+                  <input
+                    type="text"
+                    name="placeStateReg"
+                    id="placeStateReg"
+                    ngModel
+                    class="form-control"
+                  />
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon">
+                      <i class="fa fa-search prefix"></i>
+                    </span>
+                    <span class="input-group-text" id="basic-addon">
+                      <i class="fa fa-close prefix"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-9 col-md-4">
+              <div class="form-group">
+                <label for="licenses">Лицензии</label>
+                <select class="browser-default custom-select" id="licenses">
+                  <option selected>Отсутствуют</option>
+                  <option value="1">Select 1</option>
+                  <option value="2">Select 2</option>
+                  <option value="3">Select 3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button
+              mat-button
+              matStepperNext
+              [disabled]="!f.valid"
+              class="btn btn-light btn-lg"
+            >
+              Вперед
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
+      <form #secondForm="ngForm">
+        <ng-template matStepLabel>Адрес и классификаторы</ng-template>
+        <h5 class=" mb-0 pt-md-5 cyan-text">Адрес</h5>
+        <hr class="hr-light mt-0 w-100" />
+        <div class="mb-3">
+          <label for="legalAddress">Юридический адрес</label>
+          <div class="input-group">
+            <input
+              type="text"
+              name="legalAddress"
+              id="legalAddress"
+              ngModel
+              class="form-control"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon">
+                <i class="fa fa-search prefix"></i>
+              </span>
+              <span class="input-group-text" id="basic-addon">
+                <i class="fa fa-close prefix"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-6 col-md-4">
+            <div class="form-group">
+              <label for="roomStatus">Статус помещения</label>
+              <select class="browser-default custom-select" id="roomStatus">
+                <option selected>Аренда</option>
+                <option value="1">Select 1</option>
+                <option value="2">Select 2</option>
+                <option value="3">Select 3</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="form-group">
+              <label for="purposeUse">Цель использования</label>
+              <select class="browser-default custom-select" id="purposeUse">
+                <option selected>Офисное</option>
+                <option value="1">Select 1</option>
+                <option value="2">Select 2</option>
+                <option value="3">Select 3</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-9 col-md-4">
+            <div class="form-group">
+              <label for="actualAddress">Фактический адрес</label>
+              <select class="browser-default custom-select" id="actualAddress">
+                <option selected>Совпадает с юр.адресом</option>
+                <option value="1">Select 1</option>
+                <option value="2">Select 2</option>
+                <option value="3">Select 3</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <h5 class=" mb-0 pt-md-5 cyan-text">Классификаторы</h5>
+        <hr class="hr-light mt-0 w-100" />
+
+        <div class="row mb-3">
+          <div class="col-6 col-md-4">
+            <div class="form-group">
+              <label for="classObjects">ОКАТО</label>
+              <input
+                type="text"
+                name="classObjects"
+                id="classObjects"
+                ngModel
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="form-group">
+              <label for="classTerritories">ОКТМО</label>
+              <input
+                type="text"
+                name="classTerritories"
+                id="classTerritories"
+                ngModel
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="form-group">
+              <label for="classOrg">ОКПО</label>
+              <input
+                type="text"
+                name="classOrg"
+                id="classOrg"
+                ngModel
+                #classOrg="ngModel"
+                class="form-control"
+                pattern="[0-9]*"
+                minlength="8"
+                maxlength="10"
+                required
+              />
+              <p class="help-block" *ngIf="!classOrg.valid && classOrg.touched">
+                Невалидные данные
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="mb-3  col-md-4">
+            <label for="typesEconActivity">ОКВЭД</label>
+            <div class="input-group">
+              <input
+                type="text"
+                name="typesEconActivity"
+                id="typesEconActivity"
+                ngModel
+                class="form-control"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-search prefix"></i>
+                </span>
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-close prefix"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3  col-md-4">
+            <label for="classLegalForms">ОКОПФ</label>
+            <div class="input-group">
+              <input
+                type="text"
+                name="classLegalForms"
+                id="classLegalForms"
+                ngModel
+                class="form-control"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-search prefix"></i>
+                </span>
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-close prefix"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button
+            mat-button
+            matStepperPrevious
+            class="btn btn-light btn-lg mr-3"
+          >
+            Назад
+          </button>
+          <button
+            mat-button
+            matStepperNext
+            [disabled]="!secondForm.valid"
+            class="btn btn-light btn-lg"
+          >
+            Вперед
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup">
+      <form #thirdForm="ngForm">
+        <ng-template matStepLabel>Контакты и Агент</ng-template>
+        <h5 class=" mb-0 pt-md-5 cyan-text">Контакты</h5>
+        <hr class="hr-light mt-0 w-100" />
+        <div class="row">
+          <div class="col-xs-9 col-md-6">
+            <div class="form-group">
+              <label for="contacts">ФИО</label>
+              <input
+                type="text"
+                name="contacts"
+                id="contacts"
+                ngModel
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-xs-9 col-md-6">
+            <div class="form-group">
+              <label for="position">Должность</label>
+              <input
+                type="text"
+                name="position"
+                id="position"
+                ngModel
+                class="form-control"
+                placeholder="Должность контактного лица"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-xs-9 col-md-3">
+            <label for="phone">Телефон</label>
+            <div class="input-group">
+              <input
+                type="text"
+                name="phone"
+                id="phone"
+                ngModel
+                class="form-control"
+                [pattern]="mobNumberPattern"
+                [textMask]="mask"
+                required
+                #phone="ngModel"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-phone prefix"></i>
+                </span>
+              </div>
+            </div>
+            <p class="help-block" *ngIf="!phone.valid && phone.touched">Неверный номер телефона</p>
+          </div>
+          <div class="col-xs-9 col-md-3">
+            <label for="email">Электронная почта</label>
+            <div class="input-group">
+              <input
+                type="text"
+                name="email"
+                id="email"
+                ngModel
+                class="form-control"
+                required
+                email
+                #email="ngModel"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-envelope prefix"></i>
+                </span>
+              </div>
+            </div>
+            <p class="help-block" *ngIf="!email.valid && email.touched">Неверный формат email</p>
+          </div>
+          <div class="col-xs-9 col-md-6">
+            <label for="website">Сайт</label>
+            <div class="input-group">
+              <input
+                type="text"
+                name="website"
+                id="website"
+                ngModel
+                class="form-control"
+                placeholder="web-site"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-sitemap prefix"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h5 class=" mb-0 pt-md-5 cyan-text">Агент</h5>
+        <hr class="hr-light mt-0 w-100" />
+        <div class="row">
+          <div class="col-xs-9 col-md-6">
+            <div class="form-group">
+              <label for="agentContacts">ФИО</label>
+              <input
+                type="text"
+                name="agentContacts"
+                id="agentContacts"
+                ngModel
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-xs-9 col-md-6">
+            <div class="form-group">
+              <label for="agentPosition">Компания</label>
+              <input
+                type="text"
+                name="agentPosition"
+                id="agentPosition"
+                ngModel
+                class="form-control"
+                placeholder="Должность контактного лица"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-xs-9 col-md-3">
+            <label for="agentPhone">Телефон</label>
+            <div class="input-group">
+              <input
+                type="text"
+                name="agentPhone"
+                id="agentPhone"
+                ngModel
+                class="form-control"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-phone prefix"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-9 col-md-3">
+            <label for="agentEmail">Электронная почта</label>
+            <div class="input-group">
+              <input
+                type="text"
+                name="agentEmail"
+                id="agentEmail"
+                ngModel
+                class="form-control"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-envelope prefix"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-9 col-md-6">
+            <label for="agentWebsite">Сайт</label>
+            <div class="input-group">
+              <input
+                type="text"
+                name="agentWebsite"
+                id="agentWebsite"
+                ngModel
+                class="form-control"
+                placeholder="web-site"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-sitemap prefix"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-xs-9 col-md-6">
+            <label for="time">Дата и время заведения</label>
+            <div class="input-group">
+              <input
+                type="text"
+                name="time"
+                id="time"
+                ngModel
+                class="form-control"
+              />
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon">
+                  <i class="fa fa-envelope prefix"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex">
+          <button
+            mat-button
+            matStepperPrevious
+            class="btn btn-light btn-lg p-2"
+          >
+            Назад
+          </button>
+          <button
+            type="button"
+            class="btn ml-auto p-2 button"
+            [disabled]="!thirdForm.valid"
+          >
+            Сохранить
+          </button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

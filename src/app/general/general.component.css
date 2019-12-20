@@ -1,0 +1,26 @@
+.box{
+    padding: 10px;
+    box-shadow: 5px 10px 15px 10px #ced4da;
+}
+
+label {
+  margin-bottom: 0;
+  font-weight: 500;
+  color: #808080;
+}
+
+h5 {
+  color: #00838f;
+}
+
+input.ng-invalid.ng-touched {
+  border-left: 2px solid red;
+}
+
+.help-block {
+  color: red;
+}
+
+input::placeholder{
+    opacity: 0.5;
+}
